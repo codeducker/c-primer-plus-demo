@@ -1,2 +1,6 @@
 *.exe
 .vscode/
+/cmake-build-debug/
+.name
+c-primer-plus-demo.iml
+.idea

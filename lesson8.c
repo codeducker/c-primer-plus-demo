@@ -126,7 +126,7 @@ int question5(void)
 }
 
 int main(void) {
-    setbuf(stdout,NULL);
+    // setbuf(stdout,NULL);
     // printf("%f",0x1.Fp+0);
     //1. putchar(getchar()) 有效表达式 ，主要作用 讲输入字符打印出来 , getchar(putchar());//非有效表达式
     //2.
@@ -142,5 +142,7 @@ int main(void) {
     // question2();
     // question3();
     // question4();
-    question41();
+    // question41();
+     //printf("%s","hello world");
+    question5();
 }

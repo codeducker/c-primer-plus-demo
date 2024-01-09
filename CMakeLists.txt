@@ -12,7 +12,7 @@ message(STATUS "C_")
 include(test.cmake)
 
 configure_file(
-  "${PROJECT_BINARY_DIR}/t.h.in"
+  "${PROJECT_SOURCE_DIR}/temp/t.h.in"
   "${PROJECT_SOURCE_DIR}/t.h"
 )
 
@@ -60,3 +60,6 @@ add_executable(c_primer_plus_demo selfLib.c)
 if(SELF_FUNC)
   target_link_libraries(c_primer_plus_demo MathFunctions)
 endif()
+
+install(TARGETS c_primer_plus_demo DESTINATION bin)
+install(FILES "${PROJECT_BINARY_DIR}/c_primer_plus_demo.h" DESTINATION include)

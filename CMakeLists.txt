@@ -4,62 +4,17 @@ project(c_primer_plus_demo C)
 set(CMAKE_C_STANDARD 11)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
 
-set(MAJOR_VERSION 1)
-set(SOJAR_VERSION 0)
 
-message(STATUS "C_")
+# set(FILE_TXT "file.txt")
 
-include(test.cmake)
+# add_custom_command(OUTPUT ${FILE_TXT}
+  # COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/question_08/${FILE_TXT} ${FILE_TXT}
+# )
+# add_custom_target(FILE_COPY ALL DEPENDS ${FILE_TXT})
 
-configure_file(
-  "${PROJECT_SOURCE_DIR}/temp/t.h.in"
-  "${PROJECT_SOURCE_DIR}/t.h"
-)
+# add_custom_command(
+  # TARGET FILE_COPY PRE_BUILD
+  # COMMAND echo  "execute a copy task"
+# )
 
-include(git.cmake)
-
-SET(GIT_HASH "")
-get_git_hash(GIT_HASH)
-
-SET(GIT_BRANCH "")
-get_git_branch(GIT_BRANCH)
-
-message("current hash ${GIT_HASH}")
-message("current branch ${GIT_BRANCH}")
-
-include_directories(${PROJECT_BINARY_DIR})
-
-
-option(SELF_FUNC "slef defined functions" on)
-
-#if(DEFINED SELF_FUNC)
-if (SELF_FUNC)
-  include_directories("${PROJECT_SOURCE_DIR}/func")
-  add_subdirectory(func)
-  #  add_compile_definitions(SELF_FUNC)
-  add_definitions(-DSELF_FUNC)
-endif()
-
-option(LIST_ON "flag on List" on)
-
-if(NOT DEFINED LIST_ON)
-  set(arr a b c d)
-  set(LIST_LEN 0)
-  list(LENGTH arr LIST_LEN)
-  message("list length ${LIST_LEN}")
-  set(JOIN_STR "")
-  list(JOIN arr - JOIN_STR)
-  message("Join string: ${JOIN_STR}")
-endif()
-
-message("self func : ${SELF_FUNC}")
-
-add_executable(c_primer_plus_demo selfLib.c)
-
-#if(DEFINED SELF_FUNC)
-if(SELF_FUNC)
-  target_link_libraries(c_primer_plus_demo MathFunctions)
-endif()
-
-install(TARGETS c_primer_plus_demo DESTINATION bin)
-install(FILES "${PROJECT_BINARY_DIR}/c_primer_plus_demo.h" DESTINATION include)
+add_executable(c_primer_plus_demo question_08/question_08_01.c)

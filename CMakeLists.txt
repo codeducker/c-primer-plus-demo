@@ -16,5 +16,5 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
   # TARGET FILE_COPY PRE_BUILD
   # COMMAND echo  "execute a copy task"
 # )
-
-add_executable(c_primer_plus_demo question_08/question_08_01.c)
+message("name ${EXECUTE_FILE_NAME}")
+add_executable(c_primer_plus_demo ${EXECUTE_FILE_NAME})
